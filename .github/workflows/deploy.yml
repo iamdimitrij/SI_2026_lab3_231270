@@ -9,10 +9,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Lint HTML
-        uses: TechBridge-Partners/htmlhint-action@v1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          htmlhint-args: 'index.html'
+          node-version: '20'
+
+      - name: Install HTMLHint
+        run: npm install -g htmlhint
+
+      - name: Run HTMLHint Lint
+        run: htmlhint index.html
 
   docker-push:
     needs: lint-html
