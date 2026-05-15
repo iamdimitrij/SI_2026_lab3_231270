@@ -10,9 +10,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Lint HTML
-        uses: htmlhint/htmlhint-action@v2
+        uses: TechBridge-Partners/htmlhint-action@v1
         with:
-          bundle-install: false
+          htmlhint-args: 'index.html'
 
   docker-push:
     needs: lint-html
